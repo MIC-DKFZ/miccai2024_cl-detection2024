@@ -95,8 +95,8 @@ def save_images_as_npy(directory, output_directory):
 
 
 # Example usage
-input_folder = '/path/to/data/CL-Detection/CL-Detection2024 Accessible Data/Training Set/images/'
-output_folder = '/path/to/data/CL-Detection/CL-Detection2024 Accessible Data/Training Set/npy/'
+input_folder = '/path/to/data/Training Set/images/'
+output_folder = '/path/to/data/Training Set/npy/'
 
 #load_and_save_bmp_as_npy(input_folder, output_folder)
 #print_image_shapes(input_folder)

@@ -79,19 +79,19 @@ if __name__ == "__main__":
     parser.add_argument(
         "--images_dir_path",
         type=str,
-        default="/path/to/data/CL-Detection2024/Training Set/images/",
+        default="/path/to/data/Training Set/images/",
         help="Path to the images directory",
     )
     parser.add_argument(
         "--labels_path",
         type=str,
-        default="/path/to/data/CL-Detection2024/Training Set/labels.csv",
+        default="/path/to/data/Training Set/labels.csv",
         help="Path to the labels CSV file",
     )
     parser.add_argument(
         "--split_dir_path",
         type=str,
-        default="/path/to/data/CL-Detection2024/Training Set",
+        default="/path/to/data/Training Set",
         help="Path to the output split directory",
     )
 

@@ -57,7 +57,7 @@ def save_heatmap_as_image(heatmap, filename):
     heatmap_image = Image.fromarray(heatmap_normalized)
 
     # Save the image
-    heatmap_image.save(f"/path/to/projects/2024_MICCAI24_CL-Detection2024_challenge/heatmaps/{filename}")
+    heatmap_image.save(f"/path/to/2024_MICCAI24_CL-Detection2024_challenge/heatmaps/{filename}")
 
 
 
@@ -71,13 +71,13 @@ def main(config):
 
     # Configs
     if config.test_csv_path is None:
-        config.test_csv_path = f"/path/to/data/CL-Detection/CL-Detection2024 Accessible Data/Training Set/{config.split}.csv"
+        config.test_csv_path = f"/path/to/data/Training Set/{config.split}.csv"
     if config.save_metrics_path is None:
-        config.save_metrics_path = f"/path/to/projects/2024_MICCAI24_CL-Detection2024_challenge/experiments/{config.experiment_name}/metrics/"
+        config.save_metrics_path = f"/path/to/2024_MICCAI24_CL-Detection2024_challenge/experiments/{config.experiment_name}/metrics/"
     if config.load_weight_path is None:
-        config.load_weight_path = f"/path/to/projects/2024_MICCAI24_CL-Detection2024_challenge/experiments/{config.experiment_name}/final_model.pt"
+        config.load_weight_path = f"/path/to/2024_MICCAI24_CL-Detection2024_challenge/experiments/{config.experiment_name}/final_model.pt"
     if config.save_image_dir is None:
-        config.save_image_dir = f"/path/to/projects/2024_MICCAI24_CL-Detection2024_challenge/experiments/{config.experiment_name}/visualize/"
+        config.save_image_dir = f"/path/to/2024_MICCAI24_CL-Detection2024_challenge/experiments/{config.experiment_name}/visualize/"
         
     # GPU device | GPU 设备
     gpu_id = config.cuda_id
@@ -101,7 +101,7 @@ def main(config):
         else:
             # load from hydra config yaml
             model_configs = yaml.load(
-                open(f"/path/to/projects/2024_MICCAI24_CL-Detection2024_challenge/experiments/{config.experiment_name}/.hydra/config.yaml", "r")
+                open(f"/path/to/2024_MICCAI24_CL-Detection2024_challenge/experiments/{config.experiment_name}/.hydra/config.yaml", "r")
                 , Loader=yaml.FullLoader)
             model = load_model(model_name=model_configs["model_name"], **model_configs.get('model_kwargs', {}))
             #model = load_model(model_name="UNet_18")
@@ -216,7 +216,7 @@ def main(config):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    experiment_name = "experiment001"
+    experiment_name = "2024-10-10_exp001_UNet_resnet18_1024"
 
     parser.add_argument("--experiment_name", type=str, default=experiment_name)
     parser.add_argument("--split", type=str, default="test")

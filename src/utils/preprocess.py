@@ -46,8 +46,8 @@ def preprocess_images(
 
 if __name__ == "__main__":
     preprocess_images(
-        csv_file_path="/path/to/CL-Detection2024/Training Set/labels.csv",
-        output_dir="/path/to/CL-Detection2024/Training Set/images_preprocessed_zscore/",
-        root_dir="/path/to/CL-Detection2024/Training Set/images/",
+        csv_file_path="/path/to/data/Training Set/labels.csv",
+        output_dir="/path/to/data/Training Set/images_preprocessed_zscore/",
+        root_dir="/path/to/data/Training Set/images/",
         normalization_scheme="zscore",
     )

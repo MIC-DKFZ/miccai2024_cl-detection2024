@@ -47,7 +47,7 @@ def main(config):
     else:
         # load from hydra config yaml
         model_configs = yaml.load(
-            open(f"/path/to/project/2024_MICCAI24_CL-Detection2024_challenge/experiments/{config.experiment_name}/.hydra/config.yaml", "r")
+            open(f"/path/to/2024_MICCAI24_CL-Detection2024_challenge/experiments/{config.experiment_name}/.hydra/config.yaml", "r")
             , Loader=yaml.FullLoader)
         model = load_model(model_name=model_configs["model_name"], **model_configs.get('model_kwargs', {}))
     model.load_state_dict(torch.load(config.load_weight_path, map_location=device))
@@ -127,27 +127,26 @@ def main(config):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    # experiment_name = 'baseline_UNet0'
-    experiment_name = "experiment001"
+    experiment_name = "2024-10-10_exp001_UNet_resnet18_1024"
 
     # Data parameters | 数据参数
     # Path Settings | 路径设置
     parser.add_argument(
         "--images_dir_path",
         type=str,
-        default="/path/to/data/CL-Detection2024 Accessible Data/Validation Set/images/",
+        default="/path/to/data/Validation Set/images/",
     )
     parser.add_argument(
         "--save_csv_path",
         type=str,
-        default=f"/path/to/project/2024_MICCAI24_CL-Detection2024_challenge/experiments/{experiment_name}/Validation Set/predictions.csv",
+        default=f"/path/to/2024_MICCAI24_CL-Detection2024_challenge/experiments/{experiment_name}/Validation Set/predictions.csv",
     )
 
     # Model load path | 存放模型的文件路径
     parser.add_argument(
         "--load_weight_path",
         type=str,
-        default=f"/path/to/project/2024_MICCAI24_CL-Detection2024_challenge/experiments/{experiment_name}/final_model.pt",
+        default=f"/path/to/2024_MICCAI24_CL-Detection2024_challenge/experiments/{experiment_name}/final_model.pt",
     )
 
     # Model hyper-parameters: image_width and image_height

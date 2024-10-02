@@ -3,7 +3,7 @@ Copyright German Cancer Research Center (DKFZ) and contributors. Please make sur
 # Efficient Heatmap-based Cephalometric Landmark Detection with Soft Dice Loss
 
 ## Usage
-To set up the environment using conda, please run `conda env create -f environment.yaml` abd activate using `conda activate cldet24env`.
+To set up the environment using conda, please run `conda env create -f environment.yaml` and activate using `conda activate cldet24env`.
 
 To download our model weights, please run `bash download_model_checkpoint.sh` in the folder, or use directly the [following link](https://hub.dkfz.de/s/59WPXY3ZiaktRbS).
 

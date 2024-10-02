@@ -94,7 +94,7 @@ def log_images_in_training(image, heatmap, epoch):
     wandb.log({f"Heatmap_overlay": wandb.Image(overlay_image, caption=f"Heatmap_epoch_{epoch}")})
      
 
-def save_augmented_images(dataset, name="train", output_dir="/path/to/project/2024_MICCAI24_CL-Detection2024_challenge/augm/", num_images=10):
+def save_augmented_images(dataset, name="train", output_dir="/path/to/2024_MICCAI24_CL-Detection2024_challenge/augm/", num_images=10):
     os.makedirs(output_dir, exist_ok=True)
 
     for i in range(num_images):
@@ -150,10 +150,10 @@ def flatten_dict(d, parent_key='', sep='.'):
     return dict(items)
 
 
-@hydra.main(config_path="configs", config_name="config_local")
+@hydra.main(config_path="configs", config_name="config")
 def main_hydra(config):
     """
-    Main function for model training and validation using hydra configs.py.
+    Main function for model training and validation using hydra config.py.
     :param config: Configuration object containing various configuration parameters.
     """
     # print the config
@@ -221,9 +221,9 @@ def train(config):
 
     if config.image_transform_name == "random_noise":
         train_image_transform = transforms.Compose([
-            v2.RandomApply([GaussianNoise(noise_variance=(0, 0.05))], p=0.2),  # Slightly reduced noise variance
-            v2.RandomApply([v2.GaussianBlur(kernel_size=3, sigma=(0.9, 1.0))], p=0.2),  # Smaller kernel size for subtle blurring
-            v2.RandomApply([v2.ColorJitter(brightness=0.1, contrast=0.1)], p=0.2),  # Reduced jitter for more realistic variations
+            v2.RandomApply([GaussianNoise(noise_variance=(0, 0.05))], p=0.2),
+            v2.RandomApply([v2.GaussianBlur(kernel_size=3, sigma=(0.9, 1.0))], p=0.2),
+            v2.RandomApply([v2.ColorJitter(brightness=0.1, contrast=0.1)], p=0.2), 
             ZScoreNormalization(),
         ])
 
