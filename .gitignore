@@ -1,0 +1,24 @@
+# Ignore experiments folder 
+experiments/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.bmp
+
+*.pt
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+*__pycache__*

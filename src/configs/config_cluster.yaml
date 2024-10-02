@@ -1,0 +1,54 @@
+experiment_location: "/path/to/2024_MICCAI24_CL-Detection2024_challenge/"
+batch_size: 4
+batch_size_valid: 4
+cuda_id: 0
+epoch_patience: 5
+transform_name: "spatial_augmentation"
+image_transform_name: "random_noise"
+image_height: 1024
+image_width: 1024
+loss_name: "dice"
+beta1: 0.9
+beta2: 0.999
+lr: 0.001
+model_name: "UNet"
+model_kwargs:
+  encoder_name: "resnet18"
+  activation: "sigmoid"
+final_activation: null
+dataset_kwargs:
+  root_dir: "/path/to/data/Training_Set/npy/"
+  load_preprocessed: True
+val_dataset_kwargs:
+  root_dir: "/path/to/data/Training_Set/npy/"
+  load_preprocessed: True
+
+dynamic_sigma: False
+sigma: 8
+sigma_reduction_factor: 0.95
+pretrained_model_weights: ""
+
+save_model_step: 25
+log_step: 25
+scheduler_gamma: 0.9
+scheduler_step_size: 200
+train_csv_path: "/path/to/data/Training_Set/train.csv"
+train_max_epoch: 150
+valid_csv_path: "/path/to/data/Training_Set/valid.csv"
+
+job_name: "exp001_${model_name}_${model_kwargs.encoder_name}_${image_height}"
+
+save_model_dir: ${experiment_location}/experiments/${now:%Y-%m-%d}_${job_name}
+
+hydra:
+  job:
+    name: ${job_name}
+  run:
+    dir: ${save_model_dir}
+    #dir: "${experiment_location}/experiments/${now:%Y-%m-%d}_${hydra.job.name}/\
+    #${now:%H-%M-%S}"
+  sweep:
+    dir: ${save_model_dir}
+    #dir: "${experiment_location}/experiments/${now:%Y-%m-%d}_${hydra.job.name}"
+    subdir: "${now:%Y-%m-%d_%H-%M-%S}"
+
